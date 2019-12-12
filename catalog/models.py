@@ -19,7 +19,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Indeficador', max_length=100)
-    category = models.ForeignKey('catalog.Category', verbose_name='Categoria')
+    category = models.ForeignKey(Category, verbose_name='Categoria')
     description = models.TextField('Descrição', blank=True)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)
 
