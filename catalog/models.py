@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Category(models.Model):
@@ -15,11 +16,14 @@ class Category(models.Model):
     
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('catalog:category', kwargs={'slug': self.slug})
 
 class Product(models.Model):
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Indeficador', max_length=100)
-    category = models.ForeignKey(Category, verbose_name='Categoria')
+    category = models.ForeignKey('catalog.Category', verbose_name='Categoria')
     description = models.TextField('Descrição', blank=True)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)
 
