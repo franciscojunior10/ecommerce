@@ -26,7 +26,6 @@ urlpatterns = [
     # url(r'^produtos/$', ProductList.as_view(), name='produto_listar'),
     url(r'^$', views.index, name='index'),
     url(r'^contato/$', views.contact, name='contato'),
-    url(r'^produto/$', views.product, name='produto'),
-    url(r'^produtos/', include('catalog.urls', namespace='catalog')),
+    url(r'^catalogo/', include('catalog.urls', namespace='catalog')),
     url(r'^admin/', admin.site.urls),
 ]
